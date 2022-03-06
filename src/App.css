@@ -1,38 +1,79 @@
-.App {
+.nav {
+  background-color: black;
+  text-align: center;
+  height: 50px;
+}
+
+.text-blue {
+  color: navy;
+}
+
+.text-red {
+  color: rgb(190, 32, 32);
+}
+
+.on-view {
+  font-size: 10pt;
+  font-weight: bold;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.height-200 {
+  height: 200px;
+}
+
+.link {
+  color: white;
+  font-size: 18pt;
+  margin: 10px;
+}
+
+.margin-20 {
+  margin: 20px;
+}
+
+.padding-10 {
+  padding: 10px;
+}
+
+.active {
+  color: rgb(206, 184, 184);
+  font-size: 18pt;
+  margin: 10px;
+}
+
+.text-large {
+  font-size: 24pt;
+}
+
+.center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.flex-box {
+  flex-basis: 25%;
+}
+
+.fave-button {
+  background-color: rgb(13, 9, 73);
   color: white;
+  display: inline-block;
+  border: none;
+  transition-duration: 0.4s;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.fave-button:hover {
+  background-color: gray;
+  color: white;
 }
