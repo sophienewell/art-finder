@@ -62,7 +62,7 @@ function SearchPage({
               .map((val) => (
                 <ArtDisplay
                   key={val.id}
-                  gif={val}
+                  art={val}
                   addFavorite={addFavorite}
                   removeFavorite={removeFavorite}
                   isFavorite={faveIds.includes(val.id)}

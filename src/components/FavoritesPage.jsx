@@ -19,7 +19,7 @@ function FavoritesPage({ favorites, removeFavorite }) {
   );
 }
 const mapStateToProps = (state) => {
-  return { user: state.user, favorites: state.gifs.favorites };
+  return { user: state.user, favorites: state.arts.favorites };
 };
 
 const mapDispatchToProps = {
