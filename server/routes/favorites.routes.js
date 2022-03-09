@@ -16,8 +16,8 @@ router.delete("/remove/:id/", authenticate, (req, res) => {
 });
 
 router.put("/add", authenticate, (req, res) => {
-  const { art_id, title, url } = req.body;
-  if (!art_id || !title || !url) {
+  const { art_id, title, artist, date, imageId } = req.body;
+  if (!art_id || !title || !imageId) {
     return res.send({
       data: null,
       success: false,
@@ -25,7 +25,14 @@ router.put("/add", authenticate, (req, res) => {
     });
   }
 
-  const art = { user_id: req.user.id, art_id, title, url };
+  const art = {
+    user_id: req.user.id,
+    art_id,
+    title,
+    artist,
+    date,
+    imageId,
+  };
   addFavorite(res, art);
 });
 

@@ -82,6 +82,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   setFavorites,
+  setUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
