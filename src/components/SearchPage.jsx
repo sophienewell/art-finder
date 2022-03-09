@@ -1,31 +1,54 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import useFetch from "../hooks/useFetch";
+import React, {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
+import useArticAPI from "../hooks/useArticAPI";
 import ArtDisplay from "./ArtDisplay";
 import { connect } from "react-redux";
 import { setSearch, removeFavorite, addFavorite } from "../redux/actions";
+import useAPI from "../hooks/useAPI";
 
-function SearchPage({
-  user,
-  favorites,
-  addFavorite,
-  removeFavorite,
-  setSearch,
-  search,
-}) {
+function SearchPage({ user, favorites, add, remove, setSearch, search }) {
   const searchInput = useRef(null);
+  const { addFave, delFave } = useAPI();
   const [query, setQuery] = useState("");
   const [onView, setOnView] = useState("any");
-  const { data, error, loading } = useFetch(query);
-  const faveIds = useMemo(() => favorites.map((val) => val.id), [favorites]);
+  const { data, error, loading } = useArticAPI(query);
+  const faveIds = useMemo(
+    () => favorites.map((val) => val.art_id),
+    [favorites]
+  );
   useEffect(() => {
     if (data) {
       setSearch(data);
     }
   }, [data, setSearch]);
 
+  const addFavorite = useCallback(
+    async (art) => {
+      const json = await addFave({ ...art, user_id: user.id });
+      if (json.success) {
+        add(json.data);
+      }
+    },
+    [add, addFave]
+  );
+  const removeFavorite = useCallback(
+    async (art_id) => {
+      const data = await delFave(art_id, user.id);
+      if (data.success) {
+        remove(art_id);
+      }
+    },
+    [remove, delFave]
+  );
+
   return (
     <div>
-      <h2> Welcome, {user}</h2>
+      <h2> Welcome, {user.username}</h2>
       <div className="center margin-20">
         <input id="query" placeholder="search here" ref={searchInput} />
         <button
@@ -61,11 +84,11 @@ function SearchPage({
 
               .map((val) => (
                 <ArtDisplay
-                  key={val.id}
+                  key={val.art_id}
                   art={val}
                   addFavorite={addFavorite}
                   removeFavorite={removeFavorite}
-                  isFavorite={faveIds.includes(val.id)}
+                  isFavorite={faveIds.includes(val.art_id)}
                 />
               ))}
           </>
@@ -84,7 +107,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   setSearch,
-  removeFavorite,
-  addFavorite,
+  remove: removeFavorite,
+  add: addFavorite,
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);
