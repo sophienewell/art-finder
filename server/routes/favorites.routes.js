@@ -6,15 +6,15 @@ const {
   getByUserID,
 } = require("../models/favorites.models");
 
-router.get("/api/favorites/:user_id", (req, res) => {
+router.get("/:user_id", (req, res) => {
   getByUserID(res, req.params.user_id);
 });
 
-router.delete("/api/favorites/remove/:id", (req, res) => {
-  removeFavorite(res, req.params.id);
+router.delete("/remove/:id/:user_id", (req, res) => {
+  removeFavorite(res, req.params.id, req.params.user_id);
 });
 
-router.put("/api/favorites/add", (req, res) => {
+router.put("/add", (req, res) => {
   const { user_id, art_id, title, url } = req.body;
   if (!user_id || !art_id || !title || !url) {
     return res.send({

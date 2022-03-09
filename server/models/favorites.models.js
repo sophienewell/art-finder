@@ -1,10 +1,11 @@
+const { getFID } = require("web-vitals");
 const query = require("../config/mysql.conf");
 
 async function addFavorite(res, art) {
   try {
     let { insertId } = await query("INSERT INTO favorites SET ?", [art]);
     return res.send({
-      data: insertId,
+      data: { ...art, id: insertId },
       success: true,
       error: null,
     });
@@ -17,9 +18,12 @@ async function addFavorite(res, art) {
   }
 }
 
-async function removeFavorite(res, id) {
+async function removeFavorite(res, art_id, user_id) {
   try {
-    await query("DELETE FROM favorites WHERE favorites.id= ?", [id]);
+    await query(
+      "DELETE FROM favorites WHERE favorites.art_id= ? AND favorites.user_id = ?",
+      [art_id, user_id]
+    );
     return res.send({
       data: null,
       success: true,

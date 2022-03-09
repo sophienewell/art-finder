@@ -28,7 +28,7 @@ function ArtDisplay({ art, addFavorite, removeFavorite, isFavorite }) {
       {isFavorite && (
         <button
           className="margin-20 fave-button"
-          onClick={() => removeFavorite(art.id)}
+          onClick={() => removeFavorite(art.art_id)}
         >
           Remove Favorite
         </button>

@@ -3,6 +3,7 @@ import {
   ADD_FAVORITE,
   REMOVE_FAVORITE,
   CLEAR_ARTS,
+  SET_FAVORITES,
 } from "../actions";
 
 const initialState = {
@@ -18,14 +19,19 @@ export default function artsReducer(state = initialState, action) {
     case REMOVE_FAVORITE:
       return {
         ...state,
-        favorites: state.favorites.filter((val) => val.id !== action.id),
+        favorites: state.favorites.filter(
+          (val) => val.art_id !== action.art_id
+        ),
       };
 
     case SET_SEARCH:
-      return { ...state, search: action.searchResults };
+      return { ...state, search: action.results };
 
     case CLEAR_ARTS:
       return { ...state, search: [], favorites: [] };
+
+    case SET_FAVORITES:
+      return { ...state, favorites: action.favorites };
 
     default:
       return state;

@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
+import { clearArts, clearUser } from "../redux/actions";
 
-function Menu({ activeUser, children }) {
-  console.log(children);
+function Menu({ activeUser, clearArts, clearUser }) {
   return (
     <div className="nav">
       {!activeUser && (
@@ -28,6 +28,16 @@ function Menu({ activeUser, children }) {
           >
             Favorites
           </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "link")}
+            to="login"
+            onClick={() => {
+              clearArts();
+              clearUser();
+            }}
+          >
+            Logout
+          </NavLink>
         </>
       )}
     </div>
@@ -36,10 +46,13 @@ function Menu({ activeUser, children }) {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    activeUser: state.user,
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  clearArts,
+  clearUser,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

@@ -2,11 +2,13 @@ import React, { useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../redux/actions";
 import { connect } from "react-redux";
+import useAPI from "../hooks/useAPI";
 
 function LoginPage({ setUser }) {
   const usernameInput = useRef(null);
   const passwordInput = useRef(null);
   const navigate = useNavigate();
+  const { login } = useAPI();
 
   const handleLogin = useCallback(async () => {
     const username = usernameInput.current.value;
@@ -19,18 +21,11 @@ function LoginPage({ setUser }) {
     ) {
       return;
     }
-    const res = await fetch("/api/users/login", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const json = await res.json();
+    const json = await login(username, password);
     if (!json.success) {
       console.log(json.error);
     } else {
-      setUser(json.data.username);
+      setUser(json.data);
       //navigate automatically sends the user to a page (in this case search)
       navigate("/search");
     }

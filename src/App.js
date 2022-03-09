@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -11,8 +11,23 @@ import SearchPage from "./components/SearchPage";
 import FavoritesPage from "./components/FavoritesPage";
 import Menu from "./components/Menu";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { connect } from "react-redux";
+import { setFavorites } from "./redux/actions";
+import useAPI from "./hooks/useAPI";
 
-function App() {
+function App({ setFavorites, user }) {
+  const { favesByUserID } = useAPI();
+  useEffect(() => {
+    async function getFaves() {
+      if (user) {
+        const json = await favesByUserID(user.id);
+        if (json.success) {
+          setFavorites(json.data);
+        }
+      }
+    }
+    getFaves();
+  }, [user]);
   return (
     <div>
       <Router>
@@ -48,4 +63,14 @@ function App() {
     </div>
   );
 }
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+const mapDispatchToProps = {
+  setFavorites,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
