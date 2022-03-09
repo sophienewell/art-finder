@@ -12,15 +12,15 @@ import FavoritesPage from "./components/FavoritesPage";
 import Menu from "./components/Menu";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { connect } from "react-redux";
-import { setFavorites } from "./redux/actions";
+import { setFavorites, setUser } from "./redux/actions";
 import useAPI from "./hooks/useAPI";
 
-function App({ setFavorites, user }) {
-  const { favesByUserID } = useAPI();
+function App({ setFavorites, user, setUser }) {
+  const { favesByUserID, verify } = useAPI();
   useEffect(() => {
     async function getFaves() {
       if (user) {
-        const json = await favesByUserID(user.id);
+        const json = await favesByUserID();
         if (json.success) {
           setFavorites(json.data);
         }
@@ -28,6 +28,17 @@ function App({ setFavorites, user }) {
     }
     getFaves();
   }, [user]);
+
+  useEffect(() => {
+    async function checkUser() {
+      const json = await verify();
+      if (json.success) {
+        setUser(json.data);
+      }
+    }
+    checkUser();
+  });
+
   return (
     <div>
       <Router>

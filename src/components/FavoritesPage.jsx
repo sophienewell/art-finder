@@ -8,7 +8,7 @@ function FavoritesPage({ favorites, remove, user }) {
   const { delFave } = useAPI();
   const removeFavorite = useCallback(
     async (art_id) => {
-      const data = await delFave(art_id, user.id);
+      const data = await delFave(art_id);
       if (data.success) {
         remove(art_id);
       }

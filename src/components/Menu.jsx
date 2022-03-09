@@ -2,8 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { clearArts, clearUser } from "../redux/actions";
+import useAPI from "../hooks/useAPI";
 
 function Menu({ activeUser, clearArts, clearUser }) {
+  const { logout } = useAPI();
   return (
     <div className="nav">
       {!activeUser && (
@@ -31,7 +33,8 @@ function Menu({ activeUser, clearArts, clearUser }) {
           <NavLink
             className={({ isActive }) => (isActive ? "active" : "link")}
             to="login"
-            onClick={() => {
+            onClick={async () => {
+              await logout();
               clearArts();
               clearUser();
             }}

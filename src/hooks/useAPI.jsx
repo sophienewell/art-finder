@@ -39,22 +39,27 @@ export default function useAPI() {
   );
 
   const delFave = useCallback(
-    async (art_id, user_id) => {
-      return await makeAPICall(`/api/favorites/remove/${art_id}/${user_id}`, {
+    async (art_id) => {
+      return await makeAPICall(`/api/favorites/remove/${art_id}`, {
         method: "DELETE",
       });
     },
     [makeAPICall]
   );
 
-  const favesByUserID = useCallback(
-    async (user_id) => {
-      return await makeAPICall(`/api/favorites/${user_id}`, {
-        method: "GET",
-      });
-    },
-    [makeAPICall]
-  );
+  const favesByUserID = useCallback(async () => {
+    return await makeAPICall(`/api/favorites/`, {
+      method: "GET",
+    });
+  }, [makeAPICall]);
 
-  return { login, addFave, delFave, favesByUserID };
+  const logout = useCallback(async () => {
+    return await makeAPICall("/api/users/logout", { method: "GET" });
+  }, [makeAPICall]);
+
+  const verify = useCallback(async () => {
+    return await makeAPICall("/api/users/verify", { method: "GET" });
+  }, [makeAPICall]);
+
+  return { login, addFave, delFave, favesByUserID, logout, verify };
 }

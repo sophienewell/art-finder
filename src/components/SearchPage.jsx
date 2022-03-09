@@ -29,7 +29,7 @@ function SearchPage({ user, favorites, add, remove, setSearch, search }) {
 
   const addFavorite = useCallback(
     async (art) => {
-      const json = await addFave({ ...art, user_id: user.id });
+      const json = await addFave({ ...art });
       if (json.success) {
         add(json.data);
       }
@@ -38,7 +38,7 @@ function SearchPage({ user, favorites, add, remove, setSearch, search }) {
   );
   const removeFavorite = useCallback(
     async (art_id) => {
-      const data = await delFave(art_id, user.id);
+      const data = await delFave(art_id);
       if (data.success) {
         remove(art_id);
       }

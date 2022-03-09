@@ -1,8 +1,8 @@
-const { getFID } = require("web-vitals");
 const query = require("../config/mysql.conf");
 
 async function addFavorite(res, art) {
   try {
+    console.log(art);
     let { insertId } = await query("INSERT INTO favorites SET ?", [art]);
     return res.send({
       data: { ...art, id: insertId },
