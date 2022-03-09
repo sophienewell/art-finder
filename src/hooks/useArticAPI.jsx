@@ -21,7 +21,7 @@ export default function useArticAPI(search) {
       const response = await fetch(baseUrl + search);
       const json = await response.json();
       const artData = json.data.map((val) => ({
-        id: val.id,
+        art_id: val.id,
         title: val.title,
         artist: val.artist_display,
         date: val.date_display,

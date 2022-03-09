@@ -17,6 +17,7 @@ function FavoritesPage({ favorites, remove, user }) {
   );
   return (
     <div>
+      <h3>Here are your favorites, {user.username}</h3>
       <div className="flex-container">
         {favorites.map((val) => (
           <ArtDisplay

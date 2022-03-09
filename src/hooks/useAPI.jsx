@@ -47,7 +47,7 @@ export default function useAPI() {
     [makeAPICall]
   );
 
-  const favesByUserID = useCallback(async () => {
+  const favesByUserId = useCallback(async () => {
     return await makeAPICall(`/api/favorites/`, {
       method: "GET",
     });
@@ -61,5 +61,5 @@ export default function useAPI() {
     return await makeAPICall("/api/users/verify", { method: "GET" });
   }, [makeAPICall]);
 
-  return { login, addFave, delFave, favesByUserID, logout, verify };
+  return { login, addFave, delFave, favesByUserId, logout, verify };
 }

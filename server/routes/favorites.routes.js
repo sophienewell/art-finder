@@ -4,15 +4,15 @@ const authenticate = require("../middleware/authenticate.middleware");
 const {
   addFavorite,
   removeFavorite,
-  getByUserID,
+  getByUserId,
 } = require("../models/favorites.models");
 
 router.get("/", authenticate, (req, res) => {
-  getByUserID(res, req.user_id);
+  getByUserId(res, req.user.id);
 });
 
 router.delete("/remove/:id/", authenticate, (req, res) => {
-  removeFavorite(res, req.params.id, req.user_id);
+  removeFavorite(res, req.params.id, req.user.id);
 });
 
 router.put("/add", authenticate, (req, res) => {

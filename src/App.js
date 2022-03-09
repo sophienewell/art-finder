@@ -16,11 +16,12 @@ import { setFavorites, setUser } from "./redux/actions";
 import useAPI from "./hooks/useAPI";
 
 function App({ setFavorites, user, setUser }) {
-  const { favesByUserID, verify } = useAPI();
+  const { favesByUserId, verify } = useAPI();
   useEffect(() => {
     async function getFaves() {
       if (user) {
-        const json = await favesByUserID();
+        const json = await favesByUserId();
+        console.log(json);
         if (json.success) {
           setFavorites(json.data);
         }
@@ -37,7 +38,7 @@ function App({ setFavorites, user, setUser }) {
       }
     }
     checkUser();
-  });
+  }, []);
 
   return (
     <div>

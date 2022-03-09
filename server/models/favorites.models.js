@@ -2,7 +2,6 @@ const query = require("../config/mysql.conf");
 
 async function addFavorite(res, art) {
   try {
-    console.log(art);
     let { insertId } = await query("INSERT INTO favorites SET ?", [art]);
     return res.send({
       data: { ...art, id: insertId },
@@ -38,7 +37,7 @@ async function removeFavorite(res, art_id, user_id) {
   }
 }
 
-async function getByUserID(res, userId) {
+async function getByUserId(res, userId) {
   try {
     const arts = await query(
       "SELECT * FROM favorites WHERE favorites.user_id = ?",
@@ -58,4 +57,4 @@ async function getByUserID(res, userId) {
   }
 }
 
-module.exports = { addFavorite, removeFavorite, getByUserID };
+module.exports = { addFavorite, removeFavorite, getByUserId };
