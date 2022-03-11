@@ -1,6 +1,5 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
 import useAPI from "../hooks/useAPI";
 
 function SignUpPage() {
@@ -8,6 +7,7 @@ function SignUpPage() {
   const passwordInput = useRef(null);
   const navigate = useNavigate();
   const { signUp } = useAPI();
+  const [err, setErr] = useState("");
 
   const handleSignup = useCallback(async () => {
     const username = usernameInput.current.value;
@@ -22,7 +22,7 @@ function SignUpPage() {
     }
     const json = await signUp(username, password);
     if (!json.success) {
-      console.log(json.error);
+      setErr(json.error);
     } else {
       navigate("/login");
     }
@@ -30,6 +30,7 @@ function SignUpPage() {
 
   return (
     <div className="center margin-20">
+      <h3>Choose a username and password</h3>
       <div className="center margin-20">
         <label htmlFor="username">Username:</label>
         <input ref={usernameInput} type="text" id="username" />
@@ -39,9 +40,10 @@ function SignUpPage() {
         <label htmlFor="password">Password:</label>
         <input ref={passwordInput} type="password" id="password" />
       </div>
-      <button className="margin-20" onClick={handleSignup}>
+      <button className="margin-20 button-lpurple" onClick={handleSignup}>
         Sign up
       </button>
+      <h3 className="text-red">{err}</h3>
     </div>
   );
 }

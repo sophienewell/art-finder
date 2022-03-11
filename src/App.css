@@ -1,7 +1,22 @@
 .nav {
-  background-color: black;
-  text-align: center;
+  background-color: #0c1821;
   height: 50px;
+}
+
+.link {
+  background-color: white;
+  color: black;
+  font-size: 18pt;
+  margin: 10px;
+  text-align: center;
+}
+
+.active {
+  background-color: rgb(206, 184, 184);
+  color: black;
+  font-size: 18pt;
+  margin: 10px;
+  text-align: center;
 }
 
 .text-blue {
@@ -9,7 +24,7 @@
 }
 
 .text-red {
-  color: rgb(190, 32, 32);
+  color: #e4572e;
 }
 
 .on-view {
@@ -23,24 +38,12 @@
   height: 200px;
 }
 
-.link {
-  color: white;
-  font-size: 18pt;
-  margin: 10px;
-}
-
 .margin-20 {
   margin: 20px;
 }
 
 .padding-10 {
   padding: 10px;
-}
-
-.active {
-  color: rgb(206, 184, 184);
-  font-size: 18pt;
-  margin: 10px;
 }
 
 .text-large {
@@ -62,9 +65,7 @@
   flex-basis: 25%;
 }
 
-.fave-button {
-  background-color: rgb(13, 9, 73);
-  color: white;
+button {
   display: inline-block;
   border: none;
   transition-duration: 0.4s;
@@ -73,7 +74,22 @@
   border-radius: 5px;
 }
 
-.fave-button:hover {
-  background-color: gray;
+.button-black {
+  background-color: #0c1821;
   color: white;
+}
+
+.button-black:hover {
+  background-color: #ced3dc;
+  color: white;
+}
+
+.button-lpurple {
+  background-color: #aba9c3;
+  color: #0c1821;
+}
+
+.button-lpurple:hover {
+  background-color: #fcf7f8;
+  color: #0c1821;
 }

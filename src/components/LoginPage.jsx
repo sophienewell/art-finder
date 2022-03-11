@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../redux/actions";
 import { connect } from "react-redux";
@@ -9,6 +9,7 @@ function LoginPage({ setUser }) {
   const passwordInput = useRef(null);
   const navigate = useNavigate();
   const { login } = useAPI();
+  const [err, setErr] = useState("");
 
   const handleLogin = useCallback(async () => {
     const username = usernameInput.current.value;
@@ -23,7 +24,7 @@ function LoginPage({ setUser }) {
     }
     const json = await login(username, password);
     if (!json.success) {
-      console.log(json.error);
+      setErr(json.error);
     } else {
       setUser(json.data);
       //navigate automatically sends the user to a page (in this case search)
@@ -33,6 +34,7 @@ function LoginPage({ setUser }) {
 
   return (
     <div className="center margin-20">
+      <h3>Log in to search and view your favorites</h3>
       <div className="center margin-20">
         <label htmlFor="username">Username:</label>
         <input ref={usernameInput} type="text" id="username" />
@@ -42,9 +44,10 @@ function LoginPage({ setUser }) {
         <label htmlFor="password">Password:</label>
         <input ref={passwordInput} type="password" id="password" />
       </div>
-      <button className="margin-20" onClick={handleLogin}>
+      <button className="margin-20 button-lpurple" onClick={handleLogin}>
         Log in
       </button>
+      <h3 className="text-red">{err}</h3>
     </div>
   );
 }
