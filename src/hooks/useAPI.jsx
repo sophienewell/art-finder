@@ -25,6 +25,19 @@ export default function useAPI() {
     [makeAPICall]
   );
 
+  const signUp = useCallback(
+    async (username, password) => {
+      return await makeAPICall("/api/users/signup", {
+        method: "PUT",
+        body: JSON.stringify({ username, password }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    },
+    [makeAPICall]
+  );
+
   const addFave = useCallback(
     async (art) => {
       return await makeAPICall("/api/favorites/add", {
@@ -61,5 +74,5 @@ export default function useAPI() {
     return await makeAPICall("/api/users/verify", { method: "GET" });
   }, [makeAPICall]);
 
-  return { login, addFave, delFave, favesByUserId, logout, verify };
+  return { login, signUp, addFave, delFave, favesByUserId, logout, verify };
 }

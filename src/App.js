@@ -6,6 +6,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import SignUpPage from "./components/SignUpPage";
 import LoginPage from "./components/LoginPage";
 import SearchPage from "./components/SearchPage";
 import FavoritesPage from "./components/FavoritesPage";
@@ -45,6 +46,14 @@ function App({ setFavorites, user, setUser }) {
       <Router>
         <Menu />
         <Routes>
+          <Route
+            path="/signup"
+            element={
+              <ProtectedRoute isPrivate={false}>
+                <SignUpPage />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/login"
             element={

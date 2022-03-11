@@ -9,12 +9,20 @@ function Menu({ activeUser, clearArts, clearUser }) {
   return (
     <div className="nav">
       {!activeUser && (
-        <NavLink
-          className={({ isActive }) => (isActive ? "active" : "link")}
-          to="login"
-        >
-          Login
-        </NavLink>
+        <>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "link")}
+            to="login"
+          >
+            Login
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "active" : "link")}
+            to="signup"
+          >
+            Sign up
+          </NavLink>
+        </>
       )}
       {activeUser && (
         <>
