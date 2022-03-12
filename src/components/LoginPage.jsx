@@ -36,23 +36,13 @@ function LoginPage({ setUser }) {
     <div className="center margin-20">
       <h3 className="segoe">Log in to search and view your favorites</h3>
       <div className="center margin-20">
-        <label htmlFor="username">Username:</label>
-        <input
-          ref={usernameInput}
-          type="text"
-          id="username"
-          placeholder="username"
-        />
+        <label htmlFor="username">Username: </label>
+        <input ref={usernameInput} type="text" id="username" />
       </div>
 
       <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          ref={passwordInput}
-          type="password"
-          id="password"
-          placeholder="password"
-        />
+        <label htmlFor="password">Password: </label>
+        <input ref={passwordInput} type="password" id="password" />
       </div>
       <button className="button-lpurple" onClick={handleLogin}>
         Log in
