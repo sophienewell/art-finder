@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { clearArts, clearUser } from "../redux/actions";
 import useAPI from "../hooks/useAPI";
-import { Navbar, Container, Nav, NavbarBrand } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 function Menu({ activeUser, clearArts, clearUser }) {
   const { logout } = useAPI();
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <i class="bi bi-palette"></i>
+        <i className="bi bi-palette text-white"></i>
         <header className="segoe text-large text-white margin-20">
           Art Finder
         </header>
