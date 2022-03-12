@@ -29,7 +29,7 @@ function SignUpPage() {
   }, []);
 
   return (
-    <div className="center margin-20">
+    <div className="center margin-20 segoe">
       <h3>Choose a username and password</h3>
       <div className="center margin-20">
         <label htmlFor="username">Username:</label>
@@ -43,7 +43,7 @@ function SignUpPage() {
       <button className="margin-20 button-lpurple" onClick={handleSignup}>
         Sign up
       </button>
-      <h3 className="text-red">{err}</h3>
+      <h4 className="text-red">{err}</h4>
     </div>
   );
 }

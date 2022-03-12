@@ -48,11 +48,11 @@ function SearchPage({ user, favorites, add, remove, setSearch, search }) {
 
   return (
     <div>
-      <h2> Welcome, {user.username}</h2>
+      <h2 className="center segoe"> Welcome, {user.username}</h2>
       <div className="center margin-20">
         <input id="query" placeholder="search here" ref={searchInput} />
         <button
-          className="margin-20"
+          className="button-lpurple"
           onClick={() => {
             setQuery(searchInput.current.value);
           }}

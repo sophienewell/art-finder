@@ -16,6 +16,7 @@ import { connect } from "react-redux";
 import { setFavorites, setUser } from "./redux/actions";
 import useAPI from "./hooks/useAPI";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 function App({ setFavorites, user, setUser }) {
   const { favesByUserId, verify } = useAPI();
