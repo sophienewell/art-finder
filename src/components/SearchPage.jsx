@@ -48,7 +48,7 @@ function SearchPage({ user, favorites, add, remove, setSearch, search }) {
 
   return (
     <div>
-      <h2 className="center segoe"> Welcome, {user.username}</h2>
+      <h2 className="center segoe margin-20"> Welcome, {user.username}</h2>
       <div className="center margin-20">
         <input id="query" placeholder="search here" ref={searchInput} />
         <button

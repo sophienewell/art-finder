@@ -10,7 +10,7 @@ function Menu({ activeUser, clearArts, clearUser }) {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <i className="bi bi-palette text-white"></i>
+        <i className="bi bi-palette text-white text-large"></i>
         <header className="segoe text-large text-white margin-20">
           Art Finder
         </header>

@@ -6,10 +6,10 @@ function ArtDisplay({ art, addFavorite, removeFavorite, isFavorite }) {
     <div className="flex-box center padding-10">
       <img
         src={`https://www.artic.edu/iiif/2/${art.imageId}/full/843,/0/default.jpg`}
-        className="height-200"
+        className="height-200 padding-10"
       />
 
-      <h4>{art.title}</h4>
+      <h5>{art.title}</h5>
       <div className="lucida-sans text-red">
         {art.onView && "Currently on View!"}
       </div>

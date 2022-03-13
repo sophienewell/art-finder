@@ -17,7 +17,9 @@ function FavoritesPage({ favorites, remove, user }) {
   );
   return (
     <div>
-      <h3 className="center segoe">Here are your favorites, {user.username}</h3>
+      <h3 className="center segoe margin-20">
+        Here are your favorites, {user.username}
+      </h3>
       <div className="flex-container">
         {favorites.map((val) => (
           <ArtDisplay
