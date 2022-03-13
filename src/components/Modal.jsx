@@ -23,7 +23,7 @@ function ArtDisplayModal({ art }) {
               <Col>
                 <img
                   src={`https://www.artic.edu/iiif/2/${art.imageId}/full/843,/0/default.jpg`}
-                  className="max-500px margin-20"
+                  className="max-500px margin-20 img-fluid"
                 />
               </Col>
             </Row>

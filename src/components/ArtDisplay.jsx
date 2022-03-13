@@ -10,6 +10,7 @@ function ArtDisplay({ art, addFavorite, removeFavorite, isFavorite }) {
       />
 
       <h5>{art.title}</h5>
+      <h6>{art.artist}</h6>
       <div className="lucida-sans text-red">
         {art.onView && "Currently on View!"}
       </div>
