@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-function ArtDisplayModal() {
+function ArtDisplayModal({ art }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -9,15 +9,25 @@ function ArtDisplayModal() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <button className="button-black" onClick={handleShow}>
         More info
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{art.title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <img
+            src={`https://www.artic.edu/iiif/2/${art.imageId}/full/843,/0/default.jpg`}
+            className="height-500"
+          />
+          <h6 className="text-blue">
+            {art.artist}
+            <br />
+            {art.date}
+          </h6>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

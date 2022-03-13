@@ -10,24 +10,19 @@ function ArtDisplay({ art, addFavorite, removeFavorite, isFavorite }) {
       />
 
       <h4>{art.title}</h4>
-      <h6 className="text-blue">
-        {art.artist}
-        <br />
-        {art.date}
-      </h6>
       <div className="lucida-sans text-red">
         {art.onView && "Currently on View!"}
       </div>
       <div className="on-view">{art.onView && art.gallery}</div>
-      <ArtDisplayModal />
+      <ArtDisplayModal art={art} />
       {!isFavorite && (
-        <button className="button-black" onClick={() => addFavorite(art)}>
+        <button className="button-red" onClick={() => addFavorite(art)}>
           Add Favorite
         </button>
       )}
       {isFavorite && (
         <button
-          className="button-black"
+          className="button-red"
           onClick={() => removeFavorite(art.art_id)}
         >
           Remove Favorite

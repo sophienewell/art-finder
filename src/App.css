@@ -54,6 +54,10 @@
   height: 200px;
 }
 
+.height-500 {
+  height: 500px;
+}
+
 .margin-20 {
   margin: 20px;
 }
@@ -111,4 +115,16 @@ button {
 .button-lpurple:hover {
   background-color: #fcf7f8;
   color: #0c1821;
+}
+
+.button-red {
+  background-color: #e4572e;
+  color: white;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.button-red:hover {
+  background-color: #ced3dc;
+  color: white;
 }
