@@ -34,9 +34,9 @@ function LoginPage({ setUser }) {
 
   return (
     <div className="center margin-20">
-      <h3 className="segoe margin-20">
+      <h4 className="segoe margin-20">
         Log in to search and view your favorites
-      </h3>
+      </h4>
       <div className="center margin-20">
         <label htmlFor="username">Username: </label>
         <input ref={usernameInput} type="text" id="username" />

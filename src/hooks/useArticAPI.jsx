@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const baseUrl =
-  "https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_display,date_display,image_id,is_on_view,gallery_title&limit=100&q=";
+  "https://api.artic.edu/api/v1/artworks/search?fields=id,title,artist_display,date_display,image_id,is_on_view,gallery_title,medium_display,dimensions&limit=100&q=";
 
 export default function useArticAPI(search) {
   const [data, setData] = useState(null);
@@ -28,6 +28,8 @@ export default function useArticAPI(search) {
         imageId: val.image_id,
         onView: val.is_on_view,
         gallery: val.gallery_title,
+        medium: val.medium_display,
+        dimensions: val.dimensions,
       }));
       setData(artData);
     } catch (err) {

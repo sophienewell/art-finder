@@ -128,3 +128,8 @@ button {
   background-color: #ced3dc;
   color: white;
 }
+
+.max-500px {
+  max-width: 500px;
+  max-height: 500px;
+}
