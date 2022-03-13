@@ -1,4 +1,5 @@
 import React from "react";
+import ArtDisplayModal from "./Modal";
 
 function ArtDisplay({ art, addFavorite, removeFavorite, isFavorite }) {
   return (
@@ -7,6 +8,7 @@ function ArtDisplay({ art, addFavorite, removeFavorite, isFavorite }) {
         src={`https://www.artic.edu/iiif/2/${art.imageId}/full/843,/0/default.jpg`}
         className="height-200"
       />
+
       <h4>{art.title}</h4>
       <h6 className="text-blue">
         {art.artist}
@@ -17,6 +19,7 @@ function ArtDisplay({ art, addFavorite, removeFavorite, isFavorite }) {
         {art.onView && "Currently on View!"}
       </div>
       <div className="on-view">{art.onView && art.gallery}</div>
+      <ArtDisplayModal />
       {!isFavorite && (
         <button className="button-black" onClick={() => addFavorite(art)}>
           Add Favorite
