@@ -7,6 +7,10 @@ function ArtDisplayModal({ art }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const imageUrl = !art.imageId
+    ? "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/832px-No-Image-Placeholder.svg.png"
+    : `https://www.artic.edu/iiif/2/${art.imageId}/full/843,/0/default.jpg`;
+
   return (
     <>
       <button className="button-black" onClick={handleShow}>
@@ -21,10 +25,7 @@ function ArtDisplayModal({ art }) {
           <Container>
             <Row>
               <Col>
-                <img
-                  src={`https://www.artic.edu/iiif/2/${art.imageId}/full/843,/0/default.jpg`}
-                  className="max-500px margin-20 img-fluid"
-                />
+                <img src={imageUrl} className="max-500px margin-20 img-fluid" />
               </Col>
             </Row>
             <Row>
